@@ -1,0 +1,59 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<!-- Hero Section -->
+<div class="hero-section bg-primary text-white py-5">
+    <div class="container text-center">
+        <h1 class="display-4 fw-bold">Welcome to School Management System</h1>
+        <p class="lead">Empowering teachers and students to manage courses efficiently.</p>
+
+        @if (Context.Session.GetString("UserRole") == "Teacher")
+        {
+            <a class="btn btn-light btn-lg" href="@Url.Action("Create", "Course")">Create a Course</a>
+        }
+        else if (Context.Session.GetString("UserRole") == "Student")
+        {
+            <a class="btn btn-light btn-lg" href="@Url.Action("Index", "Subscription")">View My Courses</a>
+        }
+        else
+        {
+            <a class="btn btn-outline-light btn-lg" href="@Url.Action("Register", "Account")">Get Started</a>
+        }
+    </div>
+</div>
+
+<!-- Features Section -->
+<div class="container my-5">
+    <div class="row text-center">
+        <div class="col-md-4">
+            <div class="feature-icon bg-primary text-white rounded-circle p-3 mb-3">
+                <i class="fas fa-book fa-2x"></i>
+            </div>
+            <h3>Manage Courses</h3>
+            <p>Teachers can create and manage courses, while students can enroll and track their progress.</p>
+        </div>
+        <div class="col-md-4">
+            <div class="feature-icon bg-primary text-white rounded-circle p-3 mb-3">
+                <i class="fas fa-users fa-2x"></i>
+            </div>
+            <h3>Collaborate</h3>
+            <p>Connect with teachers and students to enhance your learning experience.</p>
+        </div>
+        <div class="col-md-4">
+            <div class="feature-icon bg-primary text-white rounded-circle p-3 mb-3">
+                <i class="fas fa-chart-line fa-2x"></i>
+            </div>
+            <h3>Track Progress</h3>
+            <p>Students can monitor their course progress and achievements in one place.</p>
+        </div>
+    </div>
+</div>
+
+<!-- Call-to-Action Section -->
+<div class="bg-light py-5">
+    <div class="container text-center">
+        <h2 class="mb-4">Ready to Get Started?</h2>
+        <a class="btn btn-primary btn-lg" href="@Url.Action("Register", "Account")">Sign Up Now</a>
+    </div>
+</div>
